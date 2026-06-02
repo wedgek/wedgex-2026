@@ -22,6 +22,14 @@ const classes = computed(() => ["button-round", `button-round-size-${props.size 
   justify-content: center;
   aspect-ratio: 1;
   border-radius: 50%;
+  color: var(--icon-color, currentColor);
+
+  :deep(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    flex-shrink: 0;
+  }
 
   &-size {
     &-sm {

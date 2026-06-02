@@ -7,14 +7,16 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ButtonRound from "../../../components/ButtonRound.vue";
 import { t } from "../../../i18n/utils/translate";
-import { social } from "../../../content/social";
+import { getSocialUrl } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
+import { isFeatureEnabled } from "../../../utils/features";
 
 import type { ProjectPreview } from "../../../content/types";
 
 const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
-const imageRef = ref<HTMLImageElement | null>(null);
+const imageRef = ref<HTMLDivElement | null>(null);
+const clickable = isFeatureEnabled("projectCardsClickable");
 
 const props = defineProps<{
   preview?: ProjectPreview;
@@ -48,17 +50,24 @@ onUnmounted(() => {
 <template>
   <Link
     class="preview-card children-unclickable"
+    :class="{ 'preview-card-static': !clickable }"
     :to="`/project/${props.preview.slug}`"
     :aria-label="t('switch-to-project', { project: props.preview.title })"
     data-cursor="arrow"
     data-sound="click"
     data-hoversound="hover"
-    v-if="props.preview"
+    v-if="props.preview && clickable"
   >
     <div class="preview-card-top" ref="wrapperRef">
       <div class="preview-card-image-wrapper">
         <div class="preview-card-image-container">
-          <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          <div
+            class="preview-card-image"
+            ref="imageRef"
+            role="img"
+            :aria-label="props.preview.title"
+            :style="{ backgroundImage: `url('${props.preview.thumbnail}')` }"
+          />
         </div>
       </div>
       <div class="preview-card-overlay">
@@ -79,13 +88,39 @@ onUnmounted(() => {
     </div>
   </Link>
 
+  <div
+    class="preview-card preview-card-static"
+    v-else-if="props.preview"
+    :aria-label="props.preview.title"
+  >
+    <div class="preview-card-top" ref="wrapperRef">
+      <div class="preview-card-image-wrapper">
+        <div class="preview-card-image-container">
+          <div
+            class="preview-card-image"
+            ref="imageRef"
+            role="img"
+            :aria-label="props.preview.title"
+            :style="{ backgroundImage: `url('${props.preview.thumbnail}')` }"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-content">
+      <div class="preview-card-copys">
+        <h3 class="preview-card-title">{{ props.preview.title }}</h3>
+        <p class="preview-card-description">{{ props.preview.description }}</p>
+      </div>
+    </div>
+  </div>
+
   <Link
-    v-else
+    v-else-if="clickable"
     class="preview-card children-unclickable"
     data-cursor="arrow-external"
     data-hoversound="hover"
     external
-    :href="social[0].url"
+    :href="getSocialUrl('mail') ?? ''"
   >
     <div class="preview-card-top preview-card-top-empty">
       <Plus class="preview-card-top-empty-icon" />
@@ -105,6 +140,11 @@ onUnmounted(() => {
   border-radius: var(--radius-xl);
   z-index: var(--z-index-layout);
 
+  &-static {
+    cursor: default;
+    pointer-events: none;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -121,7 +161,7 @@ onUnmounted(() => {
   }
 
   @include mixins.hover {
-    &:hover {
+    &:hover:not(.preview-card-static) {
       --hover: 1;
 
       &::after {
@@ -184,18 +224,23 @@ onUnmounted(() => {
   &-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     &-container {
       transition: transform 0.1s ease-in-out;
       transform: scale(calc(1 + var(--hover) * 0.02));
       aspect-ratio: 16/9;
+      width: 100%;
+      height: 100%;
     }
 
     &-wrapper {
       border-radius: var(--radius-lg);
       overflow: hidden;
       background-color: var(--color-beige-500);
+      height: 100%;
     }
   }
 

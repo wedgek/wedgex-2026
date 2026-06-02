@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="pipeline-bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#003585"/>
+      <stop offset="0.5" stop-color="#005291"/>
+      <stop offset="1" stop-color="#0086bb"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#pipeline-bg)"/>
+  <circle cx="420" cy="150" r="28" fill="#34bfff" opacity="0.25"/>
+  <circle cx="500" cy="150" r="28" fill="#34bfff" opacity="0.25"/>
+  <circle cx="580" cy="150" r="28" fill="#34bfff" opacity="0.25"/>
+  <path d="M448 150h24M528 150h24" stroke="#e1f5ff" stroke-width="3" stroke-linecap="round"/>
+  <rect x="392" y="122" width="56" height="56" rx="12" stroke="#e1f5ff" stroke-width="2"/>
+  <rect x="472" y="122" width="56" height="56" rx="12" stroke="#e1f5ff" stroke-width="2"/>
+  <rect x="552" y="122" width="56" height="56" rx="12" stroke="#e1f5ff" stroke-width="2"/>
+  <text x="48" y="92" fill="#e1f5ff" font-family="system-ui, sans-serif" font-size="24" font-weight="700">AIGC PIPELINE</text>
+  <text x="48" y="210" fill="#ffffff" font-family="system-ui, sans-serif" font-size="46" font-weight="800">AIGC å\A</text>
+  <text x="48" y="256" fill="#81bdd8" font-family="system-ui, sans-serif" font-size="22" font-weight="600"> · y · O</text>
+</svg>

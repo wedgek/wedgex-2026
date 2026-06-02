@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="lingxi-bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#003585"/>
+      <stop offset="1" stop-color="#0086bb"/>
+    </linearGradient>
+    <linearGradient id="lingxi-glow" x1="420" y1="40" x2="600" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34bfff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#34bfff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#lingxi-bg)"/>
+  <circle cx="520" cy="110" r="120" fill="url(#lingxi-glow)"/>
+  <text x="48" y="92" fill="#e1f5ff" font-family="Arial, sans-serif" font-size="28" font-weight="700">LINGXI AIGC</text>
+  <text x="48" y="210" fill="#ffffff" font-family="Arial, sans-serif" font-size="54" font-weight="800">320K</text>
+  <text x="48" y="256" fill="#81bdd8" font-family="Arial, sans-serif" font-size="22" font-weight="600">AIGC Short Video</text>
+  <rect x="48" y="286" width="120" height="6" rx="3" fill="#34bfff"/>
+</svg>

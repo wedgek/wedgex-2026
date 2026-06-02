@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="drama-bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#120826"/>
+      <stop offset="1" stop-color="#263c70"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#drama-bg)"/>
+  <rect x="180" y="56" width="280" height="180" rx="16" stroke="#34bfff" stroke-width="3" opacity="0.35"/>
+  <polygon points="290,146 290,206 350,176" fill="#34bfff"/>
+  <text x="48" y="92" fill="#81bdd8" font-family="system-ui, sans-serif" font-size="24" font-weight="700">AI SHORT DRAMA</text>
+  <text x="48" y="286" fill="#ffffff" font-family="system-ui, sans-serif" font-size="48" font-weight="800">AI íg</text>
+  <text x="48" y="326" fill="#e1f5ff" font-family="system-ui, sans-serif" font-size="20" font-weight="600">, ·  · G</text>
+</svg>

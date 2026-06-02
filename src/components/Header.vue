@@ -6,7 +6,7 @@ import { t } from "../i18n/utils/translate";
 import { useHeaderTheme } from "../composables/useHeaderTheme";
 import { lenis } from "../composables/useScroll";
 import { projectId } from "../composables/useRouteObserver";
-import { social } from "../content/social";
+import { useWechatModal } from "../composables/useWechatModal";
 import ButtonRound from "./ButtonRound.vue";
 import ArrowRight from "./icons/ArrowRight.vue";
 import SoundsToggle from "./SoundsToggle.vue";
@@ -63,6 +63,8 @@ const getInTouchClassNames = computed(() => {
     "header-get-in-touch-isProjectPage": projectId.value !== null,
   };
 });
+
+const { openWechat } = useWechatModal();
 </script>
 
 <template>
@@ -97,14 +99,14 @@ const getInTouchClassNames = computed(() => {
     </div>
     <div class="header-right">
       <Button
-        renderAs="a"
+        renderAs="button"
         variant="accent"
         :aria-label="t('get-in-touch')"
-        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
-        external
         :class="getInTouchClassNames"
         data-cursor="circle-white"
         data-hoversound="hover"
+        data-sound="click"
+        @click="openWechat"
         >{{ t("get-in-touch") }}</Button
       >
       <SoundsToggle class="header-sounds-toggle" :isDarkTheme="isDarkTheme" v-if="isFeatureEnabled('sounds')" />

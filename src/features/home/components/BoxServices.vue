@@ -106,24 +106,26 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
   timelines.value = updatedTimelines;
 };
 
-const SERVICES_EN = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Real-time Multiplayer" },
+const SERVICES_ZH = [
+  { name: "全栈工程师" },
+  { name: "独立开发" },
+  { name: "AIGC 内容生产" },
+  { name: "AI 短剧 / AI 真人剧" },
+  { name: "投流优化 · 信息流编导 · 剪辑" },
+  { name: "自媒体运营（灵犀 AIGC · 32w / 古人的 B 面 · 1.7w）" },
 ] as const satisfies { name: string }[];
 
-const SERVICES_DE = [
-  { name: "Three.js & WebGL" },
-  { name: "Node.js & WebSockets" },
-  { name: "React & Vue" },
-  { name: "Kubernetes & Redis" },
-  { name: "Echtzeit-Mehrspieler" },
+const SERVICES_EN = [
+  { name: "Full-stack Engineer" },
+  { name: "Independent Developer" },
+  { name: "AIGC Production" },
+  { name: "AI Short Drama / AI Live-action" },
+  { name: "Paid Media · Content Direction · Editing" },
+  { name: "Self-media Ops (Lingxi AIGC · 320K / The Untold Side · 17K)" },
 ] as const satisfies { name: string }[];
 
 const services = computed(() => {
-  return locale.value === "en" ? SERVICES_EN : SERVICES_DE;
+  return locale.value === "zh" ? SERVICES_ZH : SERVICES_EN;
 });
 </script>
 
@@ -241,23 +243,24 @@ const services = computed(() => {
 
     &-item {
       display: flex;
-      flex-direction: column;
-      padding-left: 18px;
-      position: relative;
+      align-items: flex-start;
+      gap: 10px;
+      padding-left: 0;
 
       &::before {
         content: "";
-        position: absolute;
-        left: 2px;
-        top: 6px;
+        flex: 0 0 4px;
         width: 4px;
         height: 4px;
+        margin-top: calc(0.5lh - 2px);
         background-color: var(--color-text-cyan-400);
         border-radius: 50%;
       }
 
       &-name {
+        flex: 1;
         font-size: var(--font-size-md);
+        line-height: var(--line-height-copy);
 
         @include mixins.landscape {
           font-size: var(--font-size-sm);

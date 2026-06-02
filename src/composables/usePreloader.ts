@@ -9,6 +9,11 @@ export const usePreloader = () => {
   const resourcesProgress = ref(0);
 
   onMounted(() => {
+    if (resources.isReady) {
+      resourcesProgress.value = 1;
+      return;
+    }
+
     resources.on("progress", (newProgress) => {
       resourcesProgress.value = newProgress;
     });
@@ -29,6 +34,7 @@ export const usePreloader = () => {
       const preloader = document.querySelector(".preloader") as HTMLElement;
       if (newProgress === 1) {
         gsap.delayedCall(0.2, () => {
+          document.documentElement.classList.remove("is-loading");
           document.body.classList.remove("is-loading");
           preloader.classList.add("preloader-hidden");
           preloaderVisible.value = false;

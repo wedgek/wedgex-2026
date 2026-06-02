@@ -13,6 +13,7 @@ import { useProjectTransition } from "./composables/useProjectTransition";
 import { useScroll } from "./composables/useScroll";
 import { projectVisible } from "./composables/useRouteObserver";
 import ProjectBackground from "./features/projects/components/ProjectBackground.vue";
+import WechatModal from "./components/WechatModal.vue";
 import { useClickSound } from "./features/sounds/composables/useClickSounds";
 //import { useHoverSound } from "./features/sounds/composables/useHoverSounds";
 
@@ -52,6 +53,7 @@ const { isTouch } = useAgent();
   </div>
 
   <Cursor v-if="!isTouch" />
+  <WechatModal />
 </template>
 
 <style lang="scss">

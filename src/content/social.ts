@@ -1,7 +1,30 @@
-export const social = [
-  { url: "mailto:me@david-hckh.com", name: "mail" },
-  { url: "https://github.com/davidhckh", name: "github" },
-  { url: "https://www.linkedin.com/in/david-heckhoff/", name: "linkedin" },
-  { url: "https://x.com/DavidHckh", name: "x" },
-  //{ url: "https://www.instagram.com/davidhckh/", name: "instagram" },
-] as const satisfies { url: string; name: "mail" | "github" | "instagram" | "linkedin" | "x" }[];
+export type SocialName = "mail" | "github" | "wechat" | "x";
+
+type SocialLink = {
+  name: SocialName;
+  url: string;
+  disabled?: boolean;
+};
+
+type SocialWechat = {
+  name: "wechat";
+  qr: string;
+};
+
+export type SocialItem = SocialLink | SocialWechat;
+
+export const social: SocialItem[] = [
+  { name: "mail", url: "mailto:tanzl_code@163.com" },
+  { name: "github", url: "https://github.com/wedgek" },
+  { name: "wechat", qr: "/images/wechat-qr.png" },
+  { name: "x", url: "#", disabled: true },
+];
+
+export const isWechatItem = (item: SocialItem): item is SocialWechat => item.name === "wechat";
+
+export const isSocialLink = (item: SocialItem): item is SocialLink => "url" in item;
+
+export const getSocialUrl = (name: SocialName): string | undefined => {
+  const item = social.find((entry) => entry.name === name);
+  return item && isSocialLink(item) ? item.url : undefined;
+};

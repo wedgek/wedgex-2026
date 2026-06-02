@@ -11,8 +11,8 @@ import AppearingText from "../../../components/AppearingText.vue";
     <div class="hero-content grid">
       <div class="hero-content-inner" id="hero-content-inner">
         <div class="hero-content-copys">
-          <h1 class="hero-title">David<br />Heckhoff</h1>
-          <Banner class="hero-banner" :copy="t('job-title')" v-if="!preloaderVisible" animated />
+          <h1 class="hero-title" v-html="t('display-name')"></h1>
+          <Banner class="hero-banner" size="sm" :copy="t('job-title')" v-if="!preloaderVisible" animated />
         </div>
       </div>
     </div>
@@ -70,9 +70,12 @@ import AppearingText from "../../../components/AppearingText.vue";
       display: flex;
       flex-direction: column;
       gap: var(--space-sm);
+      position: relative;
+      padding-bottom: 0.75em;
 
       @include mixins.mq("md") {
         gap: var(--space-md);
+        padding-bottom: 1em;
       }
     }
 
@@ -84,7 +87,12 @@ import AppearingText from "../../../components/AppearingText.vue";
   &-title {
     font-weight: 900;
     letter-spacing: 0.02em;
-    font-size: var(--font-size-title-lg);
+    line-height: 0.95;
+    font-size: var(--font-size-title-xl);
+
+    @include mixins.mq("sm") {
+      font-size: var(--font-size-title-xxl);
+    }
 
     @include mixins.landscape {
       font-size: var(--font-size-title-lg);
@@ -99,23 +107,33 @@ import AppearingText from "../../../components/AppearingText.vue";
         font-size: var(--font-size-title-xxl);
       }
     }
+
+    :deep(.hero-title-primary) {
+      display: inline-block;
+    }
+
+    :deep(.hero-title-secondary) {
+      display: inline-block;
+      font-size: 0.82em;
+      letter-spacing: 0.04em;
+    }
   }
 
   &-banner {
     position: absolute;
     bottom: 0;
-    right: -16px;
+    right: -20px;
     z-index: 10;
-    transform: rotate(-5deg) translate(0, 65%);
+    transform: rotate(-5deg) translate(0, 72%);
 
     @include mixins.mq("sm") {
-      right: -24px;
-      transform: rotate(-5deg) translate(0, 70%);
+      right: -28px;
+      transform: rotate(-5deg) translate(0, 75%);
     }
 
     @include mixins.mq("lg") {
-      right: -32px;
-      transform: rotate(-5deg) translate(0, 80%);
+      right: -36px;
+      transform: rotate(-5deg) translate(0, 78%);
     }
   }
 }

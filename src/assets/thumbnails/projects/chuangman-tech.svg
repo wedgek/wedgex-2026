@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="chuangman-bg" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#052e87"/>
+      <stop offset="1" stop-color="#234ba2"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#chuangman-bg)"/>
+  <rect x="380" y="48" width="200" height="120" rx="12" stroke="#34bfff" stroke-width="2" opacity="0.25"/>
+  <rect x="408" y="76" width="144" height="16" rx="4" fill="#34bfff" opacity="0.35"/>
+  <rect x="408" y="104" width="112" height="12" rx="4" fill="#ffffff" opacity="0.2"/>
+  <rect x="408" y="126" width="88" height="12" rx="4" fill="#ffffff" opacity="0.15"/>
+  <text x="48" y="92" fill="#e1f5ff" font-family="system-ui, sans-serif" font-size="24" font-weight="700">CHUANGMAN TECH</text>
+  <text x="48" y="210" fill="#ffffff" font-family="system-ui, sans-serif" font-size="50" font-weight="800">+Ñ€</text>
+  <text x="48" y="256" fill="#81bdd8" font-family="system-ui, sans-serif" font-size="22" font-weight="600">AIGC · …¹ · •A</text>
+</svg>

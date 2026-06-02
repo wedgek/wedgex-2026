@@ -13,6 +13,7 @@ html {
   --icon-color: var(--color-text-400);
   font-family: "Urbanist";
   letter-spacing: 0.02em;
+  scrollbar-gutter: stable;
   overflow-y: scroll !important;
 
   --vh: 1vh;
@@ -39,6 +40,10 @@ html {
   position: fixed;
   width: calc(var(--svw) * 100);
   height: calc(var(--svh) * 100);
+}
+
+html.is-loading {
+  overflow: hidden !important;
 }
 
 ::selection {

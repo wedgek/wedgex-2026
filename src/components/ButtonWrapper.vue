@@ -40,7 +40,6 @@ const classes = computed(() => [
 
   &-rounded {
     border-radius: 50%;
-    aspect-ratio: 1;
   }
 
   &-accent {

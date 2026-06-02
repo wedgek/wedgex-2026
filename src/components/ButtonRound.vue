@@ -17,11 +17,12 @@ const classes = computed(() => ["button-round", `button-round-size-${props.size 
 
 <style scoped lang="scss">
 .button-round {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1;
+  flex-shrink: 0;
   border-radius: 50%;
+  box-sizing: border-box;
   color: var(--icon-color, currentColor);
 
   :deep(svg) {
@@ -34,16 +35,19 @@ const classes = computed(() => ["button-round", `button-round-size-${props.size 
   &-size {
     &-sm {
       width: 32px;
+      height: 32px;
       padding: 6px;
     }
 
     &-md {
       width: 44px;
+      height: 44px;
       padding: 10px;
     }
 
     &-lg {
       width: 52px;
+      height: 52px;
       padding: 14px;
     }
   }

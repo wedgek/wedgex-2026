@@ -93,6 +93,8 @@ const isDisabled = (item: SocialItem) => "disabled" in item && item.disabled;
     background: none;
     padding: 0;
     cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
 
     &-button {
       appearance: none;

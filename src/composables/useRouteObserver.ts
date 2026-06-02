@@ -1,11 +1,12 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { stripBase } from "../utils/basePath";
 import { isTransitioning } from "./useProjectTransition";
 
 // -----------------------------------------------------------------------------
 // GLOBAL REACTIVE PATH
 // -----------------------------------------------------------------------------
 
-export const path = ref(typeof window !== "undefined" ? window.location.pathname : "/");
+export const path = ref(typeof window !== "undefined" ? stripBase(window.location.pathname) : "/");
 
 // -----------------------------------------------------------------------------
 // COMPUTED HELPERS
@@ -66,7 +67,7 @@ function patchHistory() {
 
 export function useRouteObserver() {
   const update = () => {
-    const newPath = window.location.pathname;
+    const newPath = stripBase(window.location.pathname);
     if (newPath !== path.value) {
       path.value = newPath;
     }

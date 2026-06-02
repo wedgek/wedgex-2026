@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ArrowRight from "../../../components/icons/ArrowRight.vue";
 import { t } from "../../../i18n/utils/translate";
+import { publicPath } from "../../../utils/basePath";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -11,7 +12,7 @@ const { project } = defineProps<{
 
 <template>
   <div class="next-project children-unclickable" data-hoversound="hover">
-    <img :src="project.thumbnail" :alt="project.title" class="next-project-image" />
+    <img :src="publicPath(project.thumbnail)" :alt="project.title" class="next-project-image" />
     <div class="next-project-content">
       <p class="next-project-prefix">{{ t("next-project") }}:</p>
       <h3 class="next-project-title">{{ project.title }}</h3>

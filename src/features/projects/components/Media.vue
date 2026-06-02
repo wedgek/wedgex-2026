@@ -2,6 +2,7 @@
 import { computed, ref, onMounted, watchEffect } from "vue";
 import gsap from "gsap";
 import Notch from "../../../components/Notch.vue";
+import { publicPath } from "../../../utils/basePath";
 
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const mediaRef = ref<HTMLVideoElement | HTMLImageElement | null>(null);
@@ -17,6 +18,8 @@ export interface Props {
 }
 
 const props = defineProps<Props>();
+
+const resolvedSrc = computed(() => (props.src.startsWith("/") ? publicPath(props.src) : props.src));
 
 const wrapperClasses = computed(() => {
   return {
@@ -57,7 +60,7 @@ onMounted(async () => {
     <div class="project-media-content" ref="mediaContentRef">
       <img
         v-if="props.type === 'image'"
-        :src="props.src"
+        :src="resolvedSrc"
         :alt="props.alt"
         loading="lazy"
         fetchpriority="high"
@@ -66,7 +69,7 @@ onMounted(async () => {
       />
       <video
         v-else
-        :src="props.src"
+        :src="resolvedSrc"
         autoplay
         muted
         loop
@@ -75,7 +78,7 @@ onMounted(async () => {
         class="project-media-video"
         ref="mediaRef"
       >
-        <source :src="props.src" type="video/mp4" />
+        <source :src="resolvedSrc" type="video/mp4" />
       </video>
     </div>
     <div class="project-media-caption" v-if="props.caption">

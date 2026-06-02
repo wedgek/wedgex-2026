@@ -6,6 +6,7 @@ import LangSwitch from "./LangSwitch.vue";
 import NotchSection from "./NotchSection.vue";
 import { t } from "../i18n/utils/translate";
 import { locale } from "../i18n/store";
+import { publicPath } from "../utils/basePath";
 import ButtonRound from "./ButtonRound.vue";
 import { lenis } from "../composables/useScroll";
 import ArrowRightLong from "./icons/ArrowRightLong.vue";
@@ -44,7 +45,7 @@ const { withSocial = true } = defineProps<Props>();
           <div class="footer-top-links-legal">
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'zh' ? '/zh/privacy' : '/privacy'"
+                :href="publicPath(locale === 'zh' ? '/zh/privacy' : '/privacy')"
                 class="footer-link"
                 :external="true"
                 data-cursor="circle-white"
@@ -55,7 +56,7 @@ const { withSocial = true } = defineProps<Props>();
             </Clickable>
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'zh' ? '/zh/legal' : '/legal'"
+                :href="publicPath(locale === 'zh' ? '/zh/legal' : '/legal')"
                 class="footer-link children-unclickable"
                 :external="true"
                 data-cursor="circle-white"

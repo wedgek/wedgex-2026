@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import ProjectComponent from "./ProjectComponent.vue";
+import { publicPath } from "../../../utils/basePath";
 
 import type { ProjectComponentProps } from "../types";
 
@@ -13,6 +14,8 @@ export interface Props {
 }
 
 const props = defineProps<Props>();
+
+const resolvedSrc = computed(() => (props.src.startsWith("/") ? publicPath(props.src) : props.src));
 
 const imageClasses = computed(() => {
   return {
@@ -40,7 +43,7 @@ const contentClasses = computed(() => {
 
 <template>
   <div :class="imageClasses">
-    <img :src="props.src" :alt="props.alt" loading="lazy" fetchpriority="high" :class="imageContentClasses" />
+    <img :src="resolvedSrc" :alt="props.alt" loading="lazy" fetchpriority="high" :class="imageContentClasses" />
   </div>
   <div :class="contentClasses" v-if="props.component">
     <ProjectComponent :type="props.component.type" :props="props.component.props" :index="0" />

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { useRouter } from "../composables/useRouter";
+import { withBase } from "../utils/basePath";
 
 const attrs = useAttrs();
 const router = useRouter();
@@ -58,7 +59,7 @@ const handleClick = (event: MouseEvent) => {
   <component
     v-else
     :is="props.renderAs || 'a'"
-    :href="resolvedTo"
+    :href="withBase(resolvedTo)"
     @click="handleClick"
     v-bind="attrs"
   >

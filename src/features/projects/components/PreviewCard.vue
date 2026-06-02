@@ -10,6 +10,7 @@ import { t } from "../../../i18n/utils/translate";
 import { getSocialUrl } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
 import { isFeatureEnabled } from "../../../utils/features";
+import { publicPath } from "../../../utils/basePath";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -66,7 +67,7 @@ onUnmounted(() => {
             ref="imageRef"
             role="img"
             :aria-label="props.preview.title"
-            :style="{ backgroundImage: `url('${props.preview.thumbnail}')` }"
+            :style="{ backgroundImage: `url('${publicPath(props.preview.thumbnail)}')` }"
           />
         </div>
       </div>
@@ -101,7 +102,7 @@ onUnmounted(() => {
             ref="imageRef"
             role="img"
             :aria-label="props.preview.title"
-            :style="{ backgroundImage: `url('${props.preview.thumbnail}')` }"
+            :style="{ backgroundImage: `url('${publicPath(props.preview.thumbnail)}')` }"
           />
         </div>
       </div>

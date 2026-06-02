@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { social, isWechatItem } from "../content/social";
 import { useWechatModal } from "../composables/useWechatModal";
+import { publicPath } from "../utils/basePath";
 
 const { wechatOpen, closeWechat, handleWechatKeydown } = useWechatModal();
 
-const qrSrc = social.find(isWechatItem)?.qr ?? "/images/wechat-qr.png";
+const qrSrc = publicPath("/images/wechat-qr.png");
 </script>
 
 <template>
